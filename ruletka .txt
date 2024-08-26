@@ -1,0 +1,10 @@
+od 0 - 49 red
+od 51 - 100 black
+50 - green
+
+czerwone od 1 do 20 
+czarne od 21 do 40
+zielone 0
+
+parzyste - ?
+nieparzyste - ? 
