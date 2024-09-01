@@ -10,6 +10,7 @@
 <p id="wallet"></p>
 
 <form>
+
     <label for="bet">Bet ammount red :</label><br>
     <input type="text" id="bet" name="bet"><br>
 
@@ -20,6 +21,7 @@
     <input type="text" id="bet" name="bet"><br><br>
 
     <input type="submit" value="Submit">
+    
 </form><br>
 
 <button id="exit" type="button" onclick="document.write('You\'ve exited a casino')">Exit casino</button>
@@ -39,6 +41,7 @@
 
         document.getElementById("wallet").textContent = "Your chip ammount is: " + wallet;
         
+
         // document.getElementById("rulette").innerHTML = ruletteResult
 
         if (ruletteResult <= 20 && ruletteResult >=1){
