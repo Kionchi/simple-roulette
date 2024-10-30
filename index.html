@@ -7,21 +7,80 @@
     <title>Ruletka</title>
 </head>
 <body>
-    
     <p id="wallet">Your chip amount is: 100</p>
 
-    <form> 
-        <label for="bet-red">Bet amount Red:</label><br>
-        <input type="text" id="betRed" name="bet-red"><br>
+    <form>
+        <div class="bet-group">
+            <label for="bet-red">Bet amount Red:</label>
+            <input type="text" id="betRed" name="bet-red">
+        </div>
 
-        <label for="bet-black">Bet amount Black:</label><br>
-        <input type="text" id="betBlack" name="bet-black"><br>
+        <div class="bet-group">
+            <label for="bet-black">Bet amount Black:</label>
+            <input type="text" id="betBlack" name="bet-black">
+        </div>
 
-        <label for="bet-green">Bet amount Green:</label><br>
-        <input type="text" id="betGreen" name="bet-green"><br>
+        <div class="bet-group">
+            <label for="bet-green">Bet amount Green:</label>
+            <input type="text" id="betGreen" name="bet-green">
+        </div>
 
-        <button id="submit">Submit</button>
-    </form><br>
+        <!-- <button id="submit">Submit</button> -->
+    </form>
+
+
+
+    <div class="compsoul-body">
+        <input class="compsoul-roulette-checkbox hidden" id="compsoul-roulette-checkbox" type="checkbox" name="compsoul-roulette-checkbox">
+        <label class="compsoul-roulette-label" for="compsoul-roulette-checkbox"></label>
+        <div class="compsoul-roulette">
+          <ul class="roulette-list">
+            <li class="roulette-item">0</li>
+            <li class="roulette-item">1</li>
+            <li class="roulette-item">2</li>
+            <li class="roulette-item">3</li>
+            <li class="roulette-item">4</li>
+            <li class="roulette-item">5</li>
+            <li class="roulette-item">6</li>
+            <li class="roulette-item">7</li>
+            <li class="roulette-item">8</li>
+            <li class="roulette-item">9</li>
+            <li class="roulette-item">10</li>
+            <li class="roulette-item">11</li>
+            <li class="roulette-item">12</li>
+            <li class="roulette-item">13</li>
+            <li class="roulette-item">14</li>
+            <li class="roulette-item">15</li>
+            <li class="roulette-item">16</li>
+            <li class="roulette-item">17</li>
+            <li class="roulette-item">18</li>
+            <li class="roulette-item">19</li>
+            <li class="roulette-item">00</li>
+            <li class="roulette-item">20</li>
+            <li class="roulette-item">21</li>
+            <li class="roulette-item">22</li>
+            <li class="roulette-item">23</li>
+            <li class="roulette-item">24</li>
+            <li class="roulette-item">25</li>
+            <li class="roulette-item">26</li>
+            <li class="roulette-item">27</li>
+            <li class="roulette-item">28</li>
+            <li class="roulette-item">29</li>
+            <li class="roulette-item">30</li>
+            <li class="roulette-item">31</li>
+            <li class="roulette-item">32</li>
+            <li class="roulette-item">33</li>
+            <li class="roulette-item">34</li>
+            <li class="roulette-item">35</li>
+            <li class="roulette-item">36</li>
+            <li class="roulette-item">37</li>
+            <li class="roulette-item">38</li> 
+            
+          </ul>
+          <div class="roulette-marker"></div>
+        </div>
+      </div>
+      
 
     <button id="exit" type="button" onclick="document.write('You\'ve exited a casino')">Exit casino</button>
     <p id="rulette"></p>
