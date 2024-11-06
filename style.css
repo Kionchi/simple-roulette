@@ -36,10 +36,10 @@ form {
     align-items: center;
 }
 
-label {
+/* label {
     font-size: 1rem;
     margin-bottom: 5px;
-}
+} */
 
 input[type="text"] {
     width: 100%;
@@ -96,7 +96,7 @@ button {
   }
   .compsoul-body {
     align-items: center;
-    background: #2c3e50;
+    /* background: #2c3e50; */
     display: flex;
     flex-flow: column wrap;
     font-size: 1.125vw;
@@ -184,7 +184,8 @@ button {
     z-index: -1;
   }
   .compsoul-roulette .roulette-list {
-    animation: roulette 0.8s linear infinite paused;
+    /* animation: roulette 0.8s linear infinite paused; */
+    transition-duration: 3s;
     border-radius: 100%;
     font-family: Helvetica, Arial, sans-serif;
     height: 100%;
@@ -196,9 +197,9 @@ button {
     width: 100%;
     z-index: -1;
   }
-  .compsoul-roulette-checkbox:checked + .compsoul-roulette-label + .compsoul-roulette .roulette-list {
+  /* .compsoul-roulette-checkbox:checked + .compsoul-roulette-label + .compsoul-roulette .roulette-list {
     animation-play-state: running;
-  }
+  } */
   @keyframes roulette {
     0% {
       transform: rotate(0);
@@ -371,6 +372,7 @@ button {
   .compsoul-roulette .roulette-item:nth-child(4n+4):after {
     border-top-color: #F55353;
   }
+
 
   .result-message {
     font-size: 1.2em;
