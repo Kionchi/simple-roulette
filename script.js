@@ -55,9 +55,13 @@ rouletteCheckbox.addEventListener('change', function(event) {
 
     // Symulacja wyniku ruletki
     let rouletteResult = Math.floor(Math.random() * 40); // Losuje wartość od 0 do 39
-    let angle = (360 / 40) * rouletteResult - 1; // Oblicza docelowy kąt obrotu
-    roulette.style.transform = "rotate(" + angle + "deg)"; // Ustawia transformację z odpowiednim kątem
     
+    // zrobić co drugą inkrementację, żeby  + -> - i się kręci w drugą mańke cyk
+
+    let angle = -(((360 / 40) * (rouletteResult -1) )  + 810); // Oblicza docelowy kąt obrotu
+    roulette.style.transform = "rotate(" + angle + "deg)"; // Ustawia transformację z odpowiednim kątem
+    console.log(rouletteResult)
+    console.log(angle)    
 
     // Opóźnione wyświetlenie wyniku gry
     setTimeout(() => {
