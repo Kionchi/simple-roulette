@@ -120,7 +120,7 @@ button {
   }
 .compsoul-roulette {
     --size: 34em;
-    --number-of-items: 40;  
+    --number-of-items: 38;  
     --angle: calc(360deg / var(--number-of-items));  
 
     --tangent-first: var(--angle);
@@ -338,12 +338,7 @@ button {
   .compsoul-roulette .roulette-item:nth-child(38) {
     transform: rotate( calc( 360deg / var(--number-of-items) * 37 ) );
   }
-  .compsoul-roulette .roulette-item:nth-child(39) {
-    transform: rotate( calc( 360deg / var(--number-of-items) * 38 ) );
-  }
-  .compsoul-roulette .roulette-item:nth-child(40) {
-    transform: rotate( calc( 360deg / var(--number-of-items) * 39 ) );
-  }
+
 
   
   .compsoul-roulette .roulette-item:after {
@@ -360,7 +355,7 @@ button {
     width: 0;
     z-index: -1;
   }
-  .compsoul-roulette .roulette-item-green:nth-child(4n+1):after {
+  .compsoul-roulette .roulette-item {
     border-top-color: green;
   }
   .compsoul-roulette .roulette-item:nth-child(4n+2):after {

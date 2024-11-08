@@ -1,96 +1,167 @@
-const rouletteCheckbox = document.getElementById('compsoul-roulette-checkbox');
-const redValue = document.getElementById('betRed');
-const blackValue = document.getElementById('betBlack');
-const greenValue = document.getElementById('betGreen');
-const resultMessage = document.getElementById('resultMessage');
+const rouletteCheckbox = document.getElementById("compsoul-roulette-checkbox");
+const redValue = document.getElementById("betRed");
+const blackValue = document.getElementById("betBlack");
+const greenValue = document.getElementById("betGreen");
+const resultMessage = document.getElementById("resultMessage");
 
 let wallet = 100;
+let spinControler = 0;
 
 function updateWalletDisplay() {
-    document.getElementById("wallet").textContent = "Your chip amount is: " + wallet;
+  document.getElementById("wallet").textContent =
+    "Your chip amount is: " + wallet;
 }
 
 updateWalletDisplay();
 
 // Funkcja wyświetlająca wiadomość z opóźnieniem 5,5 sekundy
 function displayResultMessage(message) {
-    setTimeout(() => {
-        resultMessage.textContent = message;
-        resultMessage.style.display = "block";
-        setTimeout(() => resultMessage.style.display = "none", 5000); 
-    }, 500); 
+  setTimeout(() => {
+    resultMessage.textContent = message;
+    resultMessage.style.display = "block";
+    setTimeout(() => (resultMessage.style.display = "none"), 5000);
+  }, 500);
 }
 
-rouletteCheckbox.addEventListener('change', function(event) {
-    if (!rouletteCheckbox.checked) return; // Jeśli odznaczono, nie rób nic
+function generateList() {
+  const values = [
+    "0",
+    "2",
+    "14",
+    "35",
+    "23",
+    "4",
+    "16",
+    "33",
+    "21",
+    "6",
+    "18",
+    "31",
+    "19",
+    "8",
+    "12",
+    "29",
+    "25",
+    "10",
+    "27",
+    "00",
+    "1",
+    "13",
+    "36",
+    "24",
+    "3",
+    "15",
+    "34",
+    "22",
+    "5",
+    "17",
+    "32",
+    "20",
+    "7",
+    "11",
+    "30",
+    "26",
+    "9",
+    "28",
+  ];
+  values.forEach((element) => {
+    const x = document.createElement("li");
+    x.className = "roulette-item";
+    x.appendChild(document.createTextNode(element));
+    document.getElementsByClassName("roulette-list")[0].appendChild(x);
+  });
+}
 
-    const roulette = document.querySelector(".compsoul-roulette .roulette-list");
-    if (!roulette) {
-        console.error("Element '.compsoul-roulette .roulette-list' nie został znaleziony.");
-        return;
-    }
+generateList();
 
-    // Pobieramy wartości zakładów
-    let betRed = parseInt(redValue.value) || 0;
-    let betBlack = parseInt(blackValue.value) || 0;
-    let betGreen = parseInt(greenValue.value) || 0;
+rouletteCheckbox.addEventListener("change", function (event) {
+  if (!rouletteCheckbox.checked) return; // Jeśli odznaczono, nie rób nic
 
-    // Walidacja zakładów
-    if (betRed <= 0 && betBlack <= 0 && betGreen <= 0) {
-        displayResultMessage("Please enter a valid bet amount for at least one color");
-        rouletteCheckbox.checked = false; // Odznacz checkbox
-        return;
-    }
+  const roulette = document.querySelector(".compsoul-roulette .roulette-list");
+  if (!roulette) {
+    console.error(
+      "Element '.compsoul-roulette .roulette-list' nie został znaleziony."
+    );
+    return;
+  }
 
-    // Walidacja środków w portfelu
-    let totalBet = betRed + betBlack + betGreen;
-    if (totalBet > wallet) {
-        displayResultMessage("You don't have enough money to place the bets.");
-        rouletteCheckbox.checked = false; // Odznacz checkbox
-        return;
-    }
+  // Pobieramy wartości zakładów
+  let betRed = parseInt(redValue.value) || 0;
+  let betBlack = parseInt(blackValue.value) || 0;
+  let betGreen = parseInt(greenValue.value) || 0;
 
-    // Odejmuje zakład z portfela
-    wallet -= totalBet;
+  // Walidacja zakładów
+  if (betRed <= 0 && betBlack <= 0 && betGreen <= 0) {
+    displayResultMessage(
+      "Please enter a valid bet amount for at least one color"
+    );
+    rouletteCheckbox.checked = false; // Odznacz checkbox
+    return;
+  }
 
-    // Symulacja wyniku ruletki
-    let rouletteResult = Math.floor(Math.random() * 40); // Losuje wartość od 0 do 39
-    
-    // zrobić co drugą inkrementację, żeby  + -> - i się kręci w drugą mańke cyk
+  // Walidacja środków w portfelu
+  let totalBet = betRed + betBlack + betGreen;
+  if (totalBet > wallet) {
+    displayResultMessage("You don't have enough money to place the bets.");
+    rouletteCheckbox.checked = false; // Odznacz checkbox
+    return;
+  }
 
-    let angle = -(((360 / 40) * (rouletteResult -1) )  + 810); // Oblicza docelowy kąt obrotu
+  wallet -= totalBet;
+
+  let rouletteResult = Math.floor(Math.random() * 40);
+
+  // zrobić co drugą inkrementację, żeby  + -> - i się kręci w drugą mańke cyk
+
+  if (spinControler % 2 == 0) {
+    let angle = -((360 / 38) * (rouletteResult - 1) + 810); // Oblicza docelowy kąt obrotu
     roulette.style.transform = "rotate(" + angle + "deg)"; // Ustawia transformację z odpowiednim kątem
-    console.log(rouletteResult)
-    console.log(angle)    
+    console.log(rouletteResult);
+    console.log(angle);
+    console.log(spinControler);
+    spinControler += 1;
+  } else {
+    let angle = -((360 / 38) * (rouletteResult - 1) - 630); // Oblicza docelowy kąt obrotu
+    roulette.style.transform = "rotate(" + angle + "deg)"; // Ustawia transformację z odpowiednim kątem
+    console.log(rouletteResult);
+    console.log(angle);
+    console.log(spinControler);
+    spinControler += 1;
+    console.log(spinControler);
+  }
 
-    // Opóźnione wyświetlenie wyniku gry
-    setTimeout(() => {
-        if (rouletteResult >= 1 && rouletteResult <= 20) { 
-            wallet += betRed * 2;
-            displayResultMessage(rouletteResult + " Red wins! Your new wallet balance: " + wallet);
-        } else if (rouletteResult >= 21 && rouletteResult <= 38) { 
-            wallet += betBlack * 2;
-            displayResultMessage(rouletteResult + " Black wins! Your new wallet balance: " + wallet);
-        } else if (rouletteResult >= 39) { 
-            wallet += betGreen * 14; 
-            displayResultMessage(rouletteResult + " Green wins! Big win! Your new wallet balance: " + wallet);
-        } else { 
-            displayResultMessage("Casino wins, sorry for your loss :( Your new balance: " + wallet);
-        }
+  // Opóźnione wyświetlenie wyniku gry
+  setTimeout(() => {
+    if (rouletteResult >= 1 && rouletteResult <= 18) {
+      wallet += betRed * 2;
+      displayResultMessage(" Red wins! Your new wallet balance: " + wallet);
+    } else if (rouletteResult >= 19 && rouletteResult <= 36) {
+      wallet += betBlack * 2;
+      displayResultMessage(" Black wins! Your new wallet balance: " + wallet);
+    } else if (rouletteResult >= 37) {
+      wallet += betGreen * 14;
+      displayResultMessage(
+        " Green wins! Big win! Your new wallet balance: " + wallet
+      );
+    } else {
+      displayResultMessage(
+        "Casino wins, sorry for your loss :( Your new balance: " + wallet
+      );
+    }
 
-        // Wyświetlanie wylosowanej wartości
-        resultMessage.textContent += ` (The result was: ${rouletteResult})`;
-        updateWalletDisplay();
+    // Wyświetlanie wylosowanej wartości
+    resultMessage.textContent += ` (The result was: ${rouletteResult})`;
+    updateWalletDisplay();
 
-        // Sprawdzenie, czy portfel jest pusty
-        if (wallet <= 0) {
-            displayResultMessage("You are flushed! Game over :)");
-            rouletteCheckbox.disabled = true; // Blokuje checkbox
-        }
-    }, 5500); 
+    // Sprawdzenie, czy portfel jest pusty
+    if (wallet <= 0) {
+      displayResultMessage("You are flushed! Game over :)");
+      rouletteCheckbox.disabled = true; // Blokuje checkbox
+    }
+  }, 5500);
 
-    // Odznacza checkbox po 5 sekundach
-    setTimeout(() => {
-        rouletteCheckbox.checked = false;
-    }, 5000);
+  // Odznacza checkbox po 5 sekundach
+  setTimeout(() => {
+    rouletteCheckbox.checked = false;
+  }, 5000);
 });
