@@ -115,7 +115,7 @@ rouletteCheckbox.addEventListener("change", function (event) {
 
   wallet -= totalBet;
 
-  let rouletteResult = Math.floor(Math.random() * 40);
+  let rouletteResult = Math.floor(Math.random() * 39);
 
   // zrobić co drugą inkrementację, żeby  + -> - i się kręci w drugą mańke cyk
 
@@ -142,7 +142,7 @@ rouletteCheckbox.addEventListener("change", function (event) {
       console.log(red.includes(rouletteResult));
       wallet += betRed * 2;
       displayResultMessage(" Red wins! Your new wallet balance: " + wallet);
-    } else if (rouletteResult == 20 || rouletteResult == 0) {
+    } else if (rouletteResult == 20 || rouletteResult == 1) {
       wallet += betGreen * 14;
       displayResultMessage(
         " Green wins! Big win! Your new wallet balance: " + wallet

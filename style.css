@@ -96,7 +96,7 @@ button {
   }
   .compsoul-body {
     align-items: center;
-    /* background: #2c3e50; */
+    background: #2c3e50;
     display: flex;
     flex-flow: column wrap;
     font-size: 1.125vw;
@@ -121,7 +121,7 @@ button {
 .compsoul-roulette {
     --size: 34em;
     --number-of-items: 38;  
-    --angle: calc(360deg / var(--number-of-items));  
+    --angle: calc(3.1416 / var(--number-of-items));  
 
     --tangent-first: var(--angle);
     --tangent-second: calc((1/3) * var(--angle) * var(--angle) * var(--angle));
@@ -356,18 +356,27 @@ button {
     width: 0;
     z-index: -1;
   }
-  .compsoul-roulette .roulette-item:after {
+  .compsoul-roulette .roulette-item:nth-child(2n-2):after {
+    border-top-color: black;
+  }
+  .compsoul-roulette .roulette-item:nth-child(2n-1):after {
+    border-top-color: red;
+  }
+.compsoul-roulette .roulette-item:nth-child(1):after {
     border-top-color: green;
-}
+  }
+  .compsoul-roulette .roulette-item:nth-child(20):after {
+    border-top-color: green;
+  }
 
-/* Adjust specific color for alternating items */
+/* Adjust specific color for alternating items
 .compsoul-roulette .roulette-item:nth-child(4n+2):after {
     border-top-color: red;
-}
-.compsoul-roulette .roulette-item:nth-child(4n+3):after,
+} */
+/* .compsoul-roulette .roulette-item:nth-child(4n+3):after,
 .compsoul-roulette .roulette-item:nth-child(4n+4):after {
     border-top-color: black;
-}
+} */
 
   .result-message {
     font-size: 1.2em;
