@@ -6,6 +6,12 @@ const resultMessage = document.getElementById("resultMessage");
 
 let wallet = 100;
 let spinControler = 0;
+const red = [
+  3, 5, 7, 9, 11, 13, 15, 17, 19, 21, 23, 25, 27, 29, 31, 33, 35, 37,
+];
+const black = [
+  2, 4, 6, 8, 10, 12, 14, 16, 18, 22, 24, 27, 28, 30, 32, 34, 36, 38,
+];
 
 function updateWalletDisplay() {
   document.getElementById("wallet").textContent =
@@ -132,23 +138,19 @@ rouletteCheckbox.addEventListener("change", function (event) {
 
   // Opóźnione wyświetlenie wyniku gry
   setTimeout(() => {
-    if (rouletteResult >= 1 && rouletteResult <= 18) {
+    if (red.includes(rouletteResult)) {
+      console.log(red.includes(rouletteResult));
       wallet += betRed * 2;
       displayResultMessage(" Red wins! Your new wallet balance: " + wallet);
-    } else if (rouletteResult >= 19 && rouletteResult <= 36) {
-      wallet += betBlack * 2;
-      displayResultMessage(" Black wins! Your new wallet balance: " + wallet);
-    } else if (rouletteResult >= 37) {
+    } else if (rouletteResult == 20 || rouletteResult == 0) {
       wallet += betGreen * 14;
       displayResultMessage(
         " Green wins! Big win! Your new wallet balance: " + wallet
       );
     } else {
-      displayResultMessage(
-        "Casino wins, sorry for your loss :( Your new balance: " + wallet
-      );
+      wallet += betBlack * 2;
+      displayResultMessage(" Black wins! Your new wallet balance: " + wallet);
     }
-
     // Wyświetlanie wylosowanej wartości
     resultMessage.textContent += ` (The result was: ${rouletteResult})`;
     updateWalletDisplay();

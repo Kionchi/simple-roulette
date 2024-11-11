@@ -221,6 +221,7 @@ button {
     text-indent: 2em;
     text-transform: uppercase;
     transform-origin: bottom center;
+    transform: rotate(calc(var(--angle) * (var(--i, 1) - 1)));
     width: calc( var(--size) / 2 );
     writing-mode: vertical-rl;
   }
@@ -355,19 +356,18 @@ button {
     width: 0;
     z-index: -1;
   }
-  .compsoul-roulette .roulette-item {
+  .compsoul-roulette .roulette-item:after {
     border-top-color: green;
-  }
-  .compsoul-roulette .roulette-item:nth-child(4n+2):after {
-    border-top-color: #F1E0AC;
-  }
-  .compsoul-roulette .roulette-item:nth-child(4n+3):after {
-    border-top-color: #F55353;
-  }
-  .compsoul-roulette .roulette-item:nth-child(4n+4):after {
-    border-top-color: #F55353;
-  }
+}
 
+/* Adjust specific color for alternating items */
+.compsoul-roulette .roulette-item:nth-child(4n+2):after {
+    border-top-color: red;
+}
+.compsoul-roulette .roulette-item:nth-child(4n+3):after,
+.compsoul-roulette .roulette-item:nth-child(4n+4):after {
+    border-top-color: black;
+}
 
   .result-message {
     font-size: 1.2em;
