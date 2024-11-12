@@ -117,18 +117,16 @@ rouletteCheckbox.addEventListener("change", function (event) {
 
   let rouletteResult = Math.floor(Math.random() * 39);
 
-  // zrobić co drugą inkrementację, żeby  + -> - i się kręci w drugą mańke cyk
-
   if (spinControler % 2 == 0) {
-    let angle = -((360 / 38) * (rouletteResult - 1) + 810); // Oblicza docelowy kąt obrotu
-    roulette.style.transform = "rotate(" + angle + "deg)"; // Ustawia transformację z odpowiednim kątem
+    let angle = -((360 / 38) * (rouletteResult - 1) + 810);
+    roulette.style.transform = "rotate(" + angle + "deg)";
     console.log(rouletteResult);
     console.log(angle);
     console.log(spinControler);
     spinControler += 1;
   } else {
-    let angle = -((360 / 38) * (rouletteResult - 1) - 630); // Oblicza docelowy kąt obrotu
-    roulette.style.transform = "rotate(" + angle + "deg)"; // Ustawia transformację z odpowiednim kątem
+    let angle = -((360 / 38) * (rouletteResult - 1) - 630);
+    roulette.style.transform = "rotate(" + angle + "deg)";
     console.log(rouletteResult);
     console.log(angle);
     console.log(spinControler);
@@ -136,7 +134,6 @@ rouletteCheckbox.addEventListener("change", function (event) {
     console.log(spinControler);
   }
 
-  // Opóźnione wyświetlenie wyniku gry
   setTimeout(() => {
     if (red.includes(rouletteResult)) {
       console.log(red.includes(rouletteResult));

@@ -184,8 +184,8 @@ button {
     z-index: -1;
   }
   .compsoul-roulette .roulette-list {
-    /* animation: roulette 0.8s linear infinite paused; */
     transition-duration: 3s;
+    transition: transform 3s ease-out;
     border-radius: 100%;
     font-family: Helvetica, Arial, sans-serif;
     height: 100%;
@@ -197,9 +197,17 @@ button {
     width: 100%;
     z-index: -1;
   }
-  /* .compsoul-roulette-checkbox:checked + .compsoul-roulette-label + .compsoul-roulette .roulette-list {
-    animation-play-state: running;
-  } */
+ /* Define the animation to run by default (idle state)  */
+  /* .compsoul-roulette .roulette-list {
+  animation: roulette 15s linear infinite;  
+  animation-play-state: running;  
+}   */
+
+/* Pause the animation when the checkbox is checked */
+/* .compsoul-roulette-checkbox:checked + .compsoul-roulette-label + .compsoul-roulette .roulette-list {
+  animation-play-state: paused;  
+} */
+
   @keyframes roulette {
     0% {
       transform: rotate(0);
@@ -369,14 +377,7 @@ button {
     border-top-color: green;
   }
 
-/* Adjust specific color for alternating items
-.compsoul-roulette .roulette-item:nth-child(4n+2):after {
-    border-top-color: red;
-} */
-/* .compsoul-roulette .roulette-item:nth-child(4n+3):after,
-.compsoul-roulette .roulette-item:nth-child(4n+4):after {
-    border-top-color: black;
-} */
+
 
   .result-message {
     font-size: 1.2em;
@@ -387,5 +388,5 @@ button {
     border: 1px solid #ddd;
     background-color: #f9f9f9;
     border-radius: 4px;
-    display: none; /* Na początku ukryty */
+    display: none;  
 }
